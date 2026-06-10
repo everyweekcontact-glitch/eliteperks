@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elite Perks Solutions LLC — Import & Export Trading</title>
+  <meta name="description" content="Elite Perks Solutions LLC: importación, exportación y trading internacional. Gestión end-to-end, sourcing, logística, documentación y cumplimiento." />
+  <meta name="theme-color" content="#0b1321" />
+    <link rel="icon" type="image/x-icon" href="EPs.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      /* Palette tuned to your logo (soft blue/green + deep ink) */
+      --bg0:#07101f;
+      --bg1:#081a2d;
+      --ink:#eaf6ff;
+      --muted: rgba(234,246,255,.72);
+      --muted2: rgba(234,246,255,.55);
+      --card: rgba(255,255,255,.08);
+      --card2: rgba(255,255,255,.12);
+      --stroke: rgba(255,255,255,.14);
+      --stroke2: rgba(255,255,255,.20);
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+
+      --a1:#a8f0df; /* mint */
+      --a2:#8fb9ff; /* soft blue */
+      --a3:#6de3ff; /* cyan */
+      --a4:#b6a6ff; /* lilac */
+
+      --radius: 22px;
+      --radius2: 28px;
+
+      --max: 1160px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--ink);
+  background: linear-gradient(
+    180deg,
+    #0b1a2a 0%,
+    #10273d 40%,
+    #0d2236 70%,
+    #0a1a2b 100%
+  );
+  overflow-x: hidden;
+  position: relative;
+}
+
+
+    /* Subtle animated “liquid glass” backdrop */
+    .bg-blobs{
+      position:fixed;
+      inset:-20vh -20vw;
+      pointer-events:none;
+      z-index:-1;
+      filter: blur(40px) saturate(130%);
+      opacity:.9;
+    }
+    .blob{
+      position:absolute;
+      width:48vmax; height:48vmax;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, rgba(168,240,223,.55), rgba(143,185,255,.2) 55%, transparent 70%);
+      mix-blend-mode: screen;
+      animation: drift 16s ease-in-out infinite;
+      transform: translate3d(0,0,0);
+    }
+    .blob.b2{
+      width:52vmax; height:52vmax;
+      left:55%; top:-8%;
+      background: radial-gradient(circle at 35% 25%, rgba(182,166,255,.5), rgba(109,227,255,.18) 55%, transparent 72%);
+      animation-duration: 19s;
+      animation-delay: -6s;
+    }
+    .blob.b3{
+      width:44vmax; height:44vmax;
+      left:15%; top:55%;
+      background: radial-gradient(circle at 40% 40%, rgba(143,185,255,.55), rgba(168,240,223,.15) 55%, transparent 70%);
+      animation-duration: 21s;
+      animation-delay: -10s;
+    }
+    @keyframes drift{
+      0%{ transform: translate(-2%, -2%) scale(1); }
+      35%{ transform: translate(4%, 3%) scale(1.04); }
+      70%{ transform: translate(-3%, 5%) scale(0.98); }
+      100%{ transform: translate(-2%, -2%) scale(1); }
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ width:min(var(--max), calc(100% - 40px)); margin:0 auto; }
+    .section{ padding: 86px 0; position:relative; }
+    .section.tight{ padding: 62px 0; }
+
+    /* Glass surface */
+    .glass{
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius2);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .glass:hover{
+      border-color: var(--stroke2);
+      transform: translateY(-1px);
+      transition: transform .35s ease, border-color .35s ease;
+    }
+
+    /* Navbar */
+    .nav{
+      position:sticky;
+      top:14px;
+      z-index:50;
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding: 12px 14px;
+      border-radius: 999px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      min-width: 220px;
+    }
+    .brand img{
+      width:44px; height:44px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      object-fit:cover;
+    }
+    .brand .name{
+      display:flex; flex-direction:column; line-height:1.05;
+    }
+    .brand .name b{ font-size: 13.5px; letter-spacing:.2px; }
+    .brand .name span{ font-size: 12px; color: var(--muted2); }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .pill{
+      padding: 9px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size: 13px;
+      transition: .25s ease;
+      user-select:none;
+    }
+    .pill:hover{
+      background: rgba(255,255,255,.08);
+      color: var(--ink);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta{
+      display:flex; align-items:center; gap:10px;
+      min-width: 220px;
+      justify-content:flex-end;
+    }
+
+    .lang{
+      display:flex;
+      gap:6px;
+      padding:6px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+    .lang button{
+      all:unset;
+      cursor:pointer;
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      color: var(--muted);
+      transition: .25s ease;
+    }
+    .lang button.active{
+      color: var(--ink);
+      background: linear-gradient(180deg, rgba(168,240,223,.22), rgba(143,185,255,.16));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 11px 14px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(180deg, rgba(168,240,223,.22), rgba(143,185,255,.14));
+      box-shadow: 0 14px 35px rgba(0,0,0,.35);
+      font-weight:700;
+      font-size: 13.2px;
+      letter-spacing:.2px;
+      cursor:pointer;
+      transition: .28s ease;
+      user-select:none;
+    }
+    .btn:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.22); }
+    .btn.ghost{
+      background: rgba(255,255,255,.05);
+      box-shadow:none;
+      font-weight:700;
+    }
+
+    /* Hero */
+    .hero{
+      padding-top: 22px;
+      padding-bottom: 64px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 22px;
+      align-items:stretch;
+    }
+
+    .hero-card{
+      padding: 26px 26px 22px;
+      position:relative;
+      overflow:hidden;
+    }
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      font-size: 12.6px;
+      margin-bottom: 14px;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:999px;
+      background: radial-gradient(circle, var(--a1), var(--a2));
+      box-shadow: 0 0 18px rgba(168,240,223,.45);
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -0.6px;
+    }
+    .lead{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16.5px;
+      line-height:1.55;
+      max-width: 62ch;
+    }
+
+    .hero-actions{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin: 18px 0 14px;
+    }
+
+    .hero-metrics{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .metric{
+      padding: 12px 12px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+    .metric b{ display:block; font-size: 16px; }
+    .metric span{ display:block; font-size: 12.5px; color: var(--muted2); margin-top: 2px; }
+
+    /* 3D card */
+    .hero-3d{
+      padding: 18px;
+      overflow:hidden;
+      position:relative;
+      min-height: 430px;
+    }
+    .canvas-wrap{
+      position:absolute; inset: 0;
+      border-radius: var(--radius2);
+      overflow:hidden;
+    }
+    canvas{ display:block; width:100%; height:100%; }
+    .hero-3d .overlay{
+      position:relative;
+      padding: 18px;
+      z-index:2;
+    }
+    .mini-title{
+      font-weight:800;
+      letter-spacing:.2px;
+      font-size: 13.5px;
+      margin-bottom: 6px;
+    }
+    .mini-sub{
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.45;
+      max-width: 46ch;
+    }
+    .chip-row{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top: 12px;
+    }
+    .chip{
+      padding: 7px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.14);
+      font-size: 12px;
+      color: var(--muted);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    /* Content grids */
+    .grid{
+      display:grid;
+      gap: 14px;
+    }
+    .grid.cols-3{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .grid.cols-2{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+
+    .card{
+      padding: 18px;
+      border-radius: var(--radius);
+      position:relative;
+      overflow:hidden;
+    }
+    .card h3{
+      margin: 10px 0 8px;
+      font-size: 16px;
+      letter-spacing:-.2px;
+    }
+    .card p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13.8px;
+      line-height:1.6;
+    }
+    .icon{
+      width:44px; height:44px;
+      border-radius: 14px;
+      display:grid; place-items:center;
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(180deg, rgba(168,240,223,.18), rgba(143,185,255,.10));
+      box-shadow: 0 18px 40px rgba(0,0,0,.25);
+      font-weight:900;
+      letter-spacing:.5px;
+    }
+
+    /* Image cards */
+    .img-card{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .img{
+      height: 190px;
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      position:relative;
+    }
+    .img img{
+      width:100%; height:100%;
+      object-fit:cover;
+      transform: scale(1.03);
+      filter: saturate(1.05) contrast(1.02);
+      opacity:.95;
+    }
+    .img::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, transparent 35%, rgba(7,16,31,.55));
+    }
+
+    /* Steps */
+    .steps{
+      counter-reset: step;
+      display:grid;
+      gap: 12px;
+    }
+    .step{
+      display:flex;
+      gap: 12px;
+      padding: 16px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+    .step::before{
+      counter-increment: step;
+      content: counter(step);
+      width: 34px; height: 34px;
+      border-radius: 12px;
+      display:grid; place-items:center;
+      background: linear-gradient(180deg, rgba(109,227,255,.22), rgba(182,166,255,.14));
+      border:1px solid rgba(255,255,255,.14);
+      font-weight:900;
+    }
+    .step b{ display:block; margin-bottom: 4px; }
+    .step span{ color: var(--muted); font-size: 13.5px; line-height:1.55; }
+
+    /* Testimonials */
+    .quote{
+      padding: 18px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+    .quote p{ margin:0 0 10px; color: var(--muted); line-height:1.65; }
+    .quote b{ font-size: 13.5px; }
+    .quote span{ display:block; color: var(--muted2); font-size: 12.5px; margin-top: 2px; }
+
+    /* FAQ */
+    details{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      border-radius: var(--radius);
+      padding: 14px 14px;
+    }
+    details + details{ margin-top: 10px; }
+    summary{
+      cursor:pointer;
+      list-style:none;
+      font-weight:800;
+      letter-spacing:-.1px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    summary::after{
+      content:"+";
+      width:28px; height:28px;
+      border-radius: 10px;
+      display:grid; place-items:center;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.12);
+      color: var(--muted);
+      transition: transform .25s ease;
+      flex:0 0 auto;
+    }
+    details[open] summary::after{ content:"–"; transform: rotate(180deg); }
+    details p{ margin: 10px 0 0; color: var(--muted); line-height:1.65; }
+
+    /* Contact */
+    .contact-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items:stretch;
+    }
+    form{
+      display:grid;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .field{
+      display:grid;
+      gap: 6px;
+    }
+    label{ font-size: 12.5px; color: var(--muted2); }
+    input, textarea, select{
+      width:100%;
+      color: var(--ink);
+      background: rgba(0,0,0,.14);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 14px;
+      padding: 12px 12px;
+      outline:none;
+      font-family: inherit;
+      transition: border-color .25s ease, transform .25s ease;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    input:focus, textarea:focus, select:focus{
+      border-color: rgba(168,240,223,.45);
+    }
+    textarea{ min-height: 120px; resize: vertical; }
+
+    .fineprint{
+      color: var(--muted2);
+      font-size: 12px;
+      line-height:1.55;
+      margin-top: 10px;
+    }
+
+    /* Footer */
+    footer{
+      padding: 26px 0 40px;
+      color: var(--muted2);
+    }
+    .foot{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap: 14px;
+      flex-wrap:wrap;
+      padding: 18px;
+      border-radius: var(--radius2);
+    }
+    .foot small{ display:block; line-height:1.6; }
+
+    /* Reveal animations */
+    .reveal{ opacity:0; transform: translateY(10px); }
+    .reveal.on{ opacity:1; transform: translateY(0); transition: opacity .7s ease, transform .7s ease; }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .nav-inner{ border-radius: 22px; }
+      .brand, .nav-cta{ min-width: unset; }
+      .hero-3d{ min-height: 380px; }
+      .grid.cols-3{ grid-template-columns: 1fr; }
+      .grid.cols-2{ grid-template-columns: 1fr; }
+      .contact-grid{ grid-template-columns: 1fr; }
+      .hero-metrics{ grid-template-columns: 1fr; }
+    }
+
+
+    /* Mobile navbar fix (prevents stretching/deformation) */
+    @media (max-width: 720px){
+      .wrap{ width:min(var(--max), calc(100% - 24px)); }
+      .nav{ top:10px; }
+      .nav-inner{
+        flex-direction:column;
+        align-items:stretch;
+        gap:10px;
+        padding: 12px;
+        border-radius: 22px;
+      }
+      .brand{
+        width:100%;
+        min-width: 0;
+      }
+      .brand img{ width:40px; height:40px; }
+      .brand .name b{ font-size: 13px; }
+      .brand .name span{ font-size: 11.5px; }
+
+      /* Keep nav links on one line and allow horizontal scroll */
+      .nav-links{
+        width:100%;
+        flex-wrap:nowrap;
+        justify-content:flex-start;
+        overflow-x:auto;
+        overflow-y:hidden;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 4px;
+        scrollbar-width: thin;
+      }
+      .nav-links::-webkit-scrollbar{ height: 6px; }
+      .nav-links::-webkit-scrollbar-thumb{
+        background: rgba(255,255,255,.14);
+        border-radius: 999px;
+      }
+      .pill{
+        flex: 0 0 auto;
+        font-size: 12.5px;
+        padding: 8px 10px;
+        white-space: nowrap;
+      }
+
+      .nav-cta{
+        width:100%;
+        min-width: 0;
+        justify-content: space-between;
+      }
+      .lang{ flex: 0 0 auto; }
+      .btn{ white-space: nowrap; }
+    }
+
+    @media (max-width: 420px){
+      .wrap{ width:min(var(--max), calc(100% - 18px)); }
+      .nav-cta{
+        flex-direction:column;
+        align-items:stretch;
+        gap:10px;
+      }
+      .lang{ justify-content:center; }
+      .btn{
+        width:100%;
+        justify-content:center;
+      }
+    }
+
+
+    /* Reduce motion accessibility */
+    @media (prefers-reduced-motion: reduce){
+      .blob{ animation:none; }
+      .reveal, .reveal.on{ transition:none !important; }
+      .glass:hover{ transform:none; }
+      .pill:hover{ transform:none; }
+      .btn:hover{ transform:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob" style="left:-10%; top:-10%;"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <!-- NAV -->
+  <div class="wrap nav">
+    <div class="nav-inner glass">
+      <a class="brand" href="#top" aria-label="Elite Perks Solutions LLC">
+        <img src="./EPs.png" alt="Elite Perks Solutions LLC logo">
+        <div class="name">
+          <b>Elite Perks Solutions LLC</b>
+          <span data-i18n="nav.tagline">Importación • Exportación • Trading</span>
+        </div>
+      </a>
+
+      <div class="nav-links">
+        <a class="pill" href="#services" data-i18n="nav.services">Servicios</a>
+        <a class="pill" href="#how" data-i18n="nav.how">Cómo trabajamos</a>
+        <a class="pill" href="#markets" data-i18n="nav.markets">Mercados</a>
+        <a class="pill" href="#faq" data-i18n="nav.faq">FAQ</a>
+        <a class="pill" href="#contact" data-i18n="nav.contact">Contacto</a>
+      </div>
+
+      <div class="nav-cta">
+        <div class="lang" role="group" aria-label="Language selector">
+          <button id="btnEs" class="active" type="button">ES</button>
+          <button id="btnEn" type="button">EN</button>
+        </div>
+        <a class="btn" href="#contact" data-i18n="nav.cta">Cotizar ahora</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <main id="top" class="section hero">
+    <div class="wrap hero-grid">
+      <section class="hero-card glass reveal">
+        <div class="kicker">
+          <span class="dot"></span>
+          <span data-i18n="hero.kicker">Trading internacional, simple y transparente</span>
+        </div>
+
+        <h1 data-i18n="hero.title">Importá y exportá con una operación prolija, rápida y segura.</h1>
+        <p class="lead" data-i18n="hero.lead">
+          En Elite Perks Solutions LLC conectamos proveedores, compradores y logística para que tu comercio exterior fluya:
+          sourcing, negociación, documentación, coordinación de carga y seguimiento.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn" href="#contact" data-i18n="hero.primary">Hablemos de tu operación</a>
+          <a class="btn ghost" href="#services" data-i18n="hero.secondary">Ver servicios</a>
+        </div>
+
+        <div class="hero-metrics">
+          <div class="metric">
+            <b data-i18n="hero.m1v">End-to-end</b>
+            <span data-i18n="hero.m1">De proveedor a destino final</span>
+          </div>
+          <div class="metric">
+            <b data-i18n="hero.m2v">Compliance-first</b>
+            <span data-i18n="hero.m2">Documentación y trazabilidad</span>
+          </div>
+          <div class="metric">
+            <b data-i18n="hero.m3v">Fast updates</b>
+            <span data-i18n="hero.m3">Seguimiento claro y constante</span>
+          </div>
+        </div>
+      </section>
+
+      <aside class="hero-3d glass reveal" aria-label="3D visual">
+        <div class="canvas-wrap">
+          <canvas id="glCanvas"></canvas>
+        </div>
+        <div class="overlay">
+          <div class="mini-title" data-i18n="hero3d.title">Vista 3D: cadena logística</div>
+          <div class="mini-sub" data-i18n="hero3d.sub">
+            Una visual animada inspirada en contenedores apilados: planificación, movimiento y control.
+          </div>
+          <div class="chip-row" aria-hidden="true">
+            <div class="chip" data-i18n="hero3d.c1">Sourcing</div>
+            <div class="chip" data-i18n="hero3d.c2">Freight</div>
+            <div class="chip" data-i18n="hero3d.c3">Docs</div>
+            <div class="chip" data-i18n="hero3d.c4">Delivery</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- SERVICES -->
+  <section id="services" class="section tight">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="kicker"><span class="dot"></span><span data-i18n="services.kicker">Qué hacemos</span></div>
+        <h2 style="margin:0 0 10px; font-size: clamp(26px, 3vw, 36px); letter-spacing:-.5px;" data-i18n="services.title">
+          Servicios de comercio exterior con foco en ejecución.
+        </h2>
+        <p style="margin:0 0 18px; color: var(--muted); max-width: 78ch; line-height:1.6;" data-i18n="services.lead">
+          Operamos como tu partner: reducimos fricción, evitamos sorpresas y ordenamos el proceso para que puedas crecer con confianza.
+        </p>
+      </div>
+
+      <div class="grid cols-3">
+        <div class="card glass reveal">
+          <div class="icon">SX</div>
+          <h3 data-i18n="services.s1t">Sourcing & negociación</h3>
+          <p data-i18n="services.s1d">Búsqueda de proveedores, comparativa, validaciones básicas y soporte en negociación comercial.</p>
+        </div>
+
+        <div class="card glass reveal">
+          <div class="icon">DX</div>
+          <h3 data-i18n="services.s2t">Documentación & coordinación</h3>
+          <p data-i18n="services.s2d">Facturas, packing list, coordinación de embarque, hitos y checklist documental para cada operación.</p>
+        </div>
+
+        <div class="card glass reveal">
+          <div class="icon">LX</div>
+          <h3 data-i18n="services.s3t">Logística & seguimiento</h3>
+          <p data-i18n="services.s3d">Coordinación con freight forwarders, tracking y actualizaciones claras hasta la entrega.</p>
+        </div>
+
+        <div class="card glass reveal">
+          <div class="icon">RX</div>
+          <h3 data-i18n="services.s4t">Gestión de riesgos</h3>
+          <p data-i18n="services.s4d">Prevención de errores típicos: términos, tiempos, documentos, calidad y comunicaciones.</p>
+        </div>
+
+        <div class="card glass reveal">
+          <div class="icon">IX</div>
+          <h3 data-i18n="services.s5t">Import / Export trading</h3>
+          <p data-i18n="services.s5d">Compras y ventas internacionales con enfoque en trazabilidad, cumplimiento y ejecución.</p>
+        </div>
+
+        <div class="card glass reveal">
+          <div class="icon">CX</div>
+          <h3 data-i18n="services.s6t">Soporte comercial</h3>
+          <p data-i18n="services.s6d">Armado de propuestas, estructura de costos y acompañamiento para escalar operaciones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section id="how" class="section">
+    <div class="wrap grid cols-2">
+      <div class="card glass reveal">
+        <div class="kicker"><span class="dot"></span><span data-i18n="how.kicker">Cómo trabajamos</span></div>
+        <h2 style="margin:0 0 10px; font-size: clamp(26px, 3vw, 36px); letter-spacing:-.5px;" data-i18n="how.title">
+          Un proceso claro, con checkpoints.
+        </h2>
+        <p style="margin:0 0 12px; color: var(--muted); line-height:1.6;" data-i18n="how.lead">
+          Menos improvisación, más control. Te compartimos avances, documentos y próximos pasos en un flujo simple.
+        </p>
+
+        <div class="steps">
+          <div class="step">
+            <div>
+              <b data-i18n="how.st1t">Brief & objetivo</b>
+              <span data-i18n="how.st1d">Definimos producto, volumen, Incoterm preferido, plazos y criterios de calidad.</span>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <b data-i18n="how.st2t">Validación & cotización</b>
+              <span data-i18n="how.st2d">Comparativa, costos estimados, tiempos y plan de ejecución.</span>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <b data-i18n="how.st3t">Ejecución</b>
+              <span data-i18n="how.st3d">Coordinamos documentos, logística y seguimiento con updates en cada hito.</span>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <b data-i18n="how.st4t">Cierre</b>
+              <span data-i18n="how.st4d">Entrega y control: learnings para que la próxima operación sea más rápida.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card glass reveal img-card">
+        <div class="img">
+          <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1600&q=80" alt="International logistics">
+        </div>
+        <div>
+          <h3 style="margin:0 0 8px;" data-i18n="how.cardt">Comunicación simple, control real.</h3>
+          <p data-i18n="how.cardd">
+            Preferimos checklists y confirmaciones cortas para evitar errores caros. Menos ruido, más resultados.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARKETS -->
+  <section id="markets" class="section tight">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="kicker"><span class="dot"></span><span data-i18n="markets.kicker">Dónde generamos valor</span></div>
+        <h2 style="margin:0 0 10px; font-size: clamp(26px, 3vw, 36px); letter-spacing:-.5px;" data-i18n="markets.title">
+          Ideal para empresas que quieren operar con orden.
+        </h2>
+        <p style="margin:0 0 18px; color: var(--muted); max-width: 78ch; line-height:1.6;" data-i18n="markets.lead">
+          Sin importar si estás empezando o escalando, armamos un flujo de trabajo “limpio” para compras o ventas internacionales.
+        </p>
+      </div>
+
+      <div class="grid cols-3">
+        <div class="card glass reveal img-card">
+          <div class="img">
+            <img src="https://images.unsplash.com/photo-1519452575417-564c1401ecc0?auto=format&fit=crop&w=1600&q=80" alt="Warehouse and pallets">
+          </div>
+          <div>
+            <h3 data-i18n="markets.m1t">Distribución & retail</h3>
+            <p data-i18n="markets.m1d">Reposición, abastecimiento, variedad de SKUs y coordinación por lotes.</p>
+          </div>
+        </div>
+
+        <div class="card glass reveal img-card">
+          <div class="img">
+            <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1600&q=80" alt="Industrial components">
+          </div>
+          <div>
+            <h3 data-i18n="markets.m2t">Industria & partes</h3>
+            <p data-i18n="markets.m2d">Componentes, repuestos, insumos técnicos y gestión documental prolija.</p>
+          </div>
+        </div>
+
+        <div class="card glass reveal img-card">
+          <div class="img">
+            <img src="https://images.unsplash.com/photo-1518527989017-5baca7a58d3c?auto=format&fit=crop&w=1600&q=80" alt="Port and containers">
+          </div>
+          <div>
+            <h3 data-i18n="markets.m3t">Comercio internacional</h3>
+            <p data-i18n="markets.m3d">Import/export, trading y coordinación de envíos con seguimiento.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST / COMPLIANCE -->
+  <section class="section">
+    <div class="wrap grid cols-2">
+      <div class="card glass reveal">
+        <div class="kicker"><span class="dot"></span><span data-i18n="trust.kicker">Confianza</span></div>
+        <h2 style="margin:0 0 10px; font-size: clamp(26px, 3vw, 36px); letter-spacing:-.5px;" data-i18n="trust.title">
+          Transparencia, trazabilidad y cumplimiento.
+        </h2>
+        <p style="margin:0; color: var(--muted); line-height:1.65;" data-i18n="trust.lead">
+          Nuestro enfoque es reducir riesgos operativos: confirmaciones, documentación ordenada y comunicación clara.
+          (No ofrecemos asesoramiento legal/aduanero; trabajamos coordinando la operación con los actores correspondientes).
+        </p>
+        <div style="height:12px"></div>
+        <div class="grid cols-2" style="gap:10px;">
+          <div class="metric" style="border-radius: 18px;">
+            <b data-i18n="trust.t1">Checklist por hito</b>
+            <span data-i18n="trust.d1">Menos errores, más control</span>
+          </div>
+          <div class="metric" style="border-radius: 18px;">
+            <b data-i18n="trust.t2">Update continuo</b>
+            <span data-i18n="trust.d2">Estado real de tu carga</span>
+          </div>
+          <div class="metric" style="border-radius: 18px;">
+            <b data-i18n="trust.t3">Costos claros</b>
+            <span data-i18n="trust.d3">Evitamos “sorpresas”</span>
+          </div>
+          <div class="metric" style="border-radius: 18px;">
+            <b data-i18n="trust.t4">Ejecución ágil</b>
+            <span data-i18n="trust.d4">Menos fricción operativa</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card glass reveal">
+        <div class="kicker"><span class="dot"></span><span data-i18n="trust.cardk">Ubicación</span></div>
+        <h3 style="margin:0 0 10px; font-size: 18px;" data-i18n="trust.cardt">Base en Florida, operación global.</h3>
+        <p style="margin:0 0 14px; color: var(--muted); line-height:1.65;" data-i18n="trust.cardd">
+          Trabajamos con una red de proveedores y partners logísticos. Coordinamos por hitos y te mantenemos al tanto.
+        </p>
+
+        <div class="metric" style="border-radius: 18px;">
+          <b>Elite Perks Solutions LLC</b>
+          <span>2721 Ocean Blvd, apt 303 — Hollywood, Florida — ZIP: 33019</span>
+        </div>
+        <div style="height:10px"></div>
+        <div class="metric" style="border-radius: 18px;">
+          <b data-i18n="trust.emailt">Email</b>
+          <span><a href="mailto:eliteperks.contact@gmail.com">eliteperks.contact@gmail.com</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section tight">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="kicker"><span class="dot"></span><span data-i18n="test.kicker">Lo que valoran</span></div>
+        <h2 style="margin:0 0 10px; font-size: clamp(26px, 3vw, 36px); letter-spacing:-.5px;" data-i18n="test.title">
+          Un partner que cuida los detalles.
+        </h2>
+      </div>
+
+      <div class="grid cols-3">
+        <div class="quote reveal">
+          <p data-i18n="test.q1">“Convirtieron un proceso confuso en un flujo simple: checklist, hitos y updates claros.”</p>
+          <b data-i18n="test.a1">Operaciones</b>
+          <span data-i18n="test.r1">Importación de insumos</span>
+        </div>
+        <div class="quote reveal">
+          <p data-i18n="test.q2">“Se notó el foco en la documentación: menos idas y vueltas, todo prolijo.”</p>
+          <b data-i18n="test.a2">Compras</b>
+          <span data-i18n="test.r2">Sourcing & coordinación</span>
+        </div>
+        <div class="quote reveal">
+          <p data-i18n="test.q3">“Lo mejor: comunicación corta, rápida y sin sorpresas.”</p>
+          <b data-i18n="test.a3">Dirección</b>
+          <span data-i18n="test.r3">Trading internacional</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="kicker"><span class="dot"></span><span data-i18n="faq.kicker">Preguntas frecuentes</span></div>
+        <h2 style="margin:0 0 14px; font-size: clamp(26px, 3vw, 36px); letter-spacing:-.5px;" data-i18n="faq.title">
+          Respuestas rápidas.
+        </h2>
+      </div>
+
+      <div class="reveal">
+        <details>
+          <summary data-i18n="faq.q1">¿Ustedes hacen despacho aduanero?</summary>
+          <p data-i18n="faq.a1">
+            No. Coordinamos la operación y la documentación, y trabajamos en conjunto con los profesionales/actores que correspondan según el caso.
+          </p>
+        </details>
+
+        <details>
+          <summary data-i18n="faq.q2">¿Pueden ayudarme a encontrar proveedores?</summary>
+          <p data-i18n="faq.a2">
+            Sí. Hacemos sourcing, comparativas y apoyo en la negociación para que tengas una decisión informada.
+          </p>
+        </details>
+
+        <details>
+          <summary data-i18n="faq.q3">¿Cómo se manejan los tiempos y el seguimiento?</summary>
+          <p data-i18n="faq.a3">
+            Definimos hitos y un checklist. Te enviamos updates en cada punto clave (documentos, salida, tránsito, arribo, entrega).
+          </p>
+        </details>
+
+        <details>
+          <summary data-i18n="faq.q4">¿Qué información necesitan para cotizar?</summary>
+          <p data-i18n="faq.a4">
+            Producto, cantidad, destino/origen, plazo, y si tenés preferencia de Incoterm. Con eso armamos un plan inicial.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="wrap contact-grid">
+      <div class="card glass reveal">
+        <div class="kicker"><span class="dot"></span><span data-i18n="contact.kicker">Contacto</span></div>
+        <h2 style="margin:0 0 10px; font-size: clamp(26px, 3vw, 36px); letter-spacing:-.5px;" data-i18n="contact.title">
+          Contanos tu operación y te respondemos rápido.
+        </h2>
+        <p style="margin:0; color: var(--muted); line-height:1.65;" data-i18n="contact.lead">
+          Si ya tenés una idea del producto y el destino, mejor: con eso podemos avanzar con una primera evaluación.
+        </p>
+
+        <div style="height:14px"></div>
+
+        <div class="metric" style="border-radius: 18px;">
+          <b data-i18n="contact.addrT">Dirección</b>
+          <span>2721 Ocean Blvd, apt 303 — Hollywood, Florida — ZIP: 33019</span>
+        </div>
+
+        <div style="height:10px"></div>
+
+        <div class="metric" style="border-radius: 18px;">
+          <b data-i18n="contact.emailT">Email</b>
+          <span><a href="mailto:eliteperks.contact@gmail.com">eliteperks.contact@gmail.com</a></span>
+        </div>
+
+        <p class="fineprint" data-i18n="contact.note">
+          Nota: Esta página es informativa. Los tiempos, costos y requerimientos dependen del producto, ruta y documentación disponible.
+        </p>
+      </div>
+
+      <div class="card glass reveal">
+        <div class="kicker"><span class="dot"></span><span data-i18n="form.kicker">Formulario</span></div>
+
+        <!-- formsubmit.co -->
+        <form action="https://formsubmit.co/dc2a091050a98164274f8193ac06f6a2" method="POST">
+          <!-- FormSubmit helpers -->
+          <input type="hidden" name="_subject" value="Elite Perks Solutions — New Inquiry" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="true" />
+          <!-- Optional: redirect after submit (set to your page if you want) -->
+          <!-- <input type="hidden" name="_next" value="https://your-domain.com/thanks.html" /> -->
+
+          <div class="field">
+            <label for="name" data-i18n="form.name">Nombre</label>
+            <input id="name" name="name" type="text" autocomplete="name" required placeholder="Tu nombre" />
+          </div>
+
+          <div class="field">
+            <label for="email" data-i18n="form.email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required placeholder="tu@mail.com" />
+          </div>
+
+          <div class="field">
+            <label for="topic" data-i18n="form.topic">Tema</label>
+            <select id="topic" name="topic" required>
+              <option value="" selected disabled data-i18n="form.topicPh">Seleccioná una opción</option>
+              <option value="Import" data-i18n="form.opt1">Importación</option>
+              <option value="Export" data-i18n="form.opt2">Exportación</option>
+              <option value="Sourcing" data-i18n="form.opt3">Sourcing / Proveedores</option>
+              <option value="Logistics" data-i18n="form.opt4">Logística / Seguimiento</option>
+              <option value="Other" data-i18n="form.opt5">Otro</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="message" data-i18n="form.msg">Mensaje</label>
+            <textarea id="message" name="message" required placeholder="Contanos producto, cantidades, origen/destino y plazos."></textarea>
+          </div>
+
+          <button class="btn" type="submit" data-i18n="form.send">Enviar</button>
+
+          <p class="fineprint" data-i18n="form.privacy">
+            Al enviar aceptás que te contactemos por email para responder tu consulta.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap foot glass reveal">
+      <div>
+        <small><b>Elite Perks Solutions LLC</b></small>
+        <small>2721 Ocean Blvd, apt 303 — Hollywood, Florida — ZIP: 33019</small>
+        <small><a href="mailto:eliteperks.contact@gmail.com">eliteperks.contact@gmail.com</a></small>
+      </div>
+      <div>
+        <small data-i18n="foot.disclaimer1">Trading / Import-Export. No crypto. No markets advisory.</small>
+        <small data-i18n="foot.disclaimer2">© <span id="year"></span> Elite Perks Solutions LLC. All rights reserved.</small>
+      </div>
+    </div>
+  </footer>
+
+  <!-- THREE.JS (3D) -->
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+
+  <script>
+    // ====== i18n ======
+    const i18n = {
+      es: {
+        "nav.tagline":"Importación • Exportación • Trading",
+        "nav.services":"Servicios",
+        "nav.how":"Cómo trabajamos",
+        "nav.markets":"Mercados",
+        "nav.faq":"FAQ",
+        "nav.contact":"Contacto",
+        "nav.cta":"Cotizar ahora",
+
+        "hero.kicker":"Trading internacional, simple y transparente",
+        "hero.title":"Importá y exportá con una operación prolija, rápida y segura.",
+        "hero.lead":"En Elite Perks Solutions LLC conectamos proveedores, compradores y logística para que tu comercio exterior fluya: sourcing, negociación, documentación, coordinación de carga y seguimiento.",
+        "hero.primary":"Hablemos de tu operación",
+        "hero.secondary":"Ver servicios",
+        "hero.m1v":"End-to-end",
+        "hero.m1":"De proveedor a destino final",
+        "hero.m2v":"Compliance-first",
+        "hero.m2":"Documentación y trazabilidad",
+        "hero.m3v":"Fast updates",
+        "hero.m3":"Seguimiento claro y constante",
+
+        "hero3d.title":"Vista 3D: cadena logística",
+        "hero3d.sub":"Una visual animada inspirada en contenedores apilados: planificación, movimiento y control.",
+        "hero3d.c1":"Sourcing",
+        "hero3d.c2":"Freight",
+        "hero3d.c3":"Docs",
+        "hero3d.c4":"Delivery",
+
+        "services.kicker":"Qué hacemos",
+        "services.title":"Servicios de comercio exterior con foco en ejecución.",
+        "services.lead":"Operamos como tu partner: reducimos fricción, evitamos sorpresas y ordenamos el proceso para que puedas crecer con confianza.",
+        "services.s1t":"Sourcing & negociación",
+        "services.s1d":"Búsqueda de proveedores, comparativa, validaciones básicas y soporte en negociación comercial.",
+        "services.s2t":"Documentación & coordinación",
+        "services.s2d":"Facturas, packing list, coordinación de embarque, hitos y checklist documental para cada operación.",
+        "services.s3t":"Logística & seguimiento",
+        "services.s3d":"Coordinación con freight forwarders, tracking y actualizaciones claras hasta la entrega.",
+        "services.s4t":"Gestión de riesgos",
+        "services.s4d":"Prevención de errores típicos: términos, tiempos, documentos, calidad y comunicaciones.",
+        "services.s5t":"Import / Export trading",
+        "services.s5d":"Compras y ventas internacionales con enfoque en trazabilidad, cumplimiento y ejecución.",
+        "services.s6t":"Soporte comercial",
+        "services.s6d":"Armado de propuestas, estructura de costos y acompañamiento para escalar operaciones.",
+
+        "how.kicker":"Cómo trabajamos",
+        "how.title":"Un proceso claro, con checkpoints.",
+        "how.lead":"Menos improvisación, más control. Te compartimos avances, documentos y próximos pasos en un flujo simple.",
+        "how.st1t":"Brief & objetivo",
+        "how.st1d":"Definimos producto, volumen, Incoterm preferido, plazos y criterios de calidad.",
+        "how.st2t":"Validación & cotización",
+        "how.st2d":"Comparativa, costos estimados, tiempos y plan de ejecución.",
+        "how.st3t":"Ejecución",
+        "how.st3d":"Coordinamos documentos, logística y seguimiento con updates en cada hito.",
+        "how.st4t":"Cierre",
+        "how.st4d":"Entrega y control: learnings para que la próxima operación sea más rápida.",
+        "how.cardt":"Comunicación simple, control real.",
+        "how.cardd":"Preferimos checklists y confirmaciones cortas para evitar errores caros. Menos ruido, más resultados.",
+
+        "markets.kicker":"Dónde generamos valor",
+        "markets.title":"Ideal para empresas que quieren operar con orden.",
+        "markets.lead":"Sin importar si estás empezando o escalando, armamos un flujo de trabajo “limpio” para compras o ventas internacionales.",
+        "markets.m1t":"Distribución & retail",
+        "markets.m1d":"Reposición, abastecimiento, variedad de SKUs y coordinación por lotes.",
+        "markets.m2t":"Industria & partes",
+        "markets.m2d":"Componentes, repuestos, insumos técnicos y gestión documental prolija.",
+        "markets.m3t":"Comercio internacional",
+        "markets.m3d":"Import/export, trading y coordinación de envíos con seguimiento.",
+
+        "trust.kicker":"Confianza",
+        "trust.title":"Transparencia, trazabilidad y cumplimiento.",
+        "trust.lead":"Nuestro enfoque es reducir riesgos operativos: confirmaciones, documentación ordenada y comunicación clara. (No ofrecemos asesoramiento legal/aduanero; trabajamos coordinando la operación con los actores correspondientes).",
+        "trust.t1":"Checklist por hito",
+        "trust.d1":"Menos errores, más control",
+        "trust.t2":"Update continuo",
+        "trust.d2":"Estado real de tu carga",
+        "trust.t3":"Costos claros",
+        "trust.d3":"Evitamos “sorpresas”",
+        "trust.t4":"Ejecución ágil",
+        "trust.d4":"Menos fricción operativa",
+        "trust.cardk":"Ubicación",
+        "trust.cardt":"Base en Florida, operación global.",
+        "trust.cardd":"Trabajamos con una red de proveedores y partners logísticos. Coordinamos por hitos y te mantenemos al tanto.",
+        "trust.emailt":"Email",
+
+        "test.kicker":"Lo que valoran",
+        "test.title":"Un partner que cuida los detalles.",
+        "test.q1":"“Convirtieron un proceso confuso en un flujo simple: checklist, hitos y updates claros.”",
+        "test.a1":"Operaciones",
+        "test.r1":"Importación de insumos",
+        "test.q2":"“Se notó el foco en la documentación: menos idas y vueltas, todo prolijo.”",
+        "test.a2":"Compras",
+        "test.r2":"Sourcing & coordinación",
+        "test.q3":"“Lo mejor: comunicación corta, rápida y sin sorpresas.”",
+        "test.a3":"Dirección",
+        "test.r3":"Trading internacional",
+
+        "faq.kicker":"Preguntas frecuentes",
+        "faq.title":"Respuestas rápidas.",
+        "faq.q1":"¿Ustedes hacen despacho aduanero?",
+        "faq.a1":"No. Coordinamos la operación y la documentación, y trabajamos en conjunto con los profesionales/actores que correspondan según el caso.",
+        "faq.q2":"¿Pueden ayudarme a encontrar proveedores?",
+        "faq.a2":"Sí. Hacemos sourcing, comparativas y apoyo en la negociación para que tengas una decisión informada.",
+        "faq.q3":"¿Cómo se manejan los tiempos y el seguimiento?",
+        "faq.a3":"Definimos hitos y un checklist. Te enviamos updates en cada punto clave (documentos, salida, tránsito, arribo, entrega).",
+        "faq.q4":"¿Qué información necesitan para cotizar?",
+        "faq.a4":"Producto, cantidad, destino/origen, plazo, y si tenés preferencia de Incoterm. Con eso armamos un plan inicial.",
+
+        "contact.kicker":"Contacto",
+        "contact.title":"Contanos tu operación y te respondemos rápido.",
+        "contact.lead":"Si ya tenés una idea del producto y el destino, mejor: con eso podemos avanzar con una primera evaluación.",
+        "contact.addrT":"Dirección",
+        "contact.emailT":"Email",
+        "contact.note":"Nota: Esta página es informativa. Los tiempos, costos y requerimientos dependen del producto, ruta y documentación disponible.",
+
+        "form.kicker":"Formulario",
+        "form.name":"Nombre",
+        "form.email":"Email",
+        "form.topic":"Tema",
+        "form.topicPh":"Seleccioná una opción",
+        "form.opt1":"Importación",
+        "form.opt2":"Exportación",
+        "form.opt3":"Sourcing / Proveedores",
+        "form.opt4":"Logística / Seguimiento",
+        "form.opt5":"Otro",
+        "form.msg":"Mensaje",
+        "form.send":"Enviar",
+        "form.privacy":"Al enviar aceptás que te contactemos por email para responder tu consulta.",
+
+        "foot.disclaimer1":"Trading / Import-Export. No crypto. No markets advisory.",
+        "foot.disclaimer2":"© {year} Elite Perks Solutions LLC. All rights reserved."
+      },
+      en: {
+        "nav.tagline":"Import • Export • Trading",
+        "nav.services":"Services",
+        "nav.how":"How we work",
+        "nav.markets":"Markets",
+        "nav.faq":"FAQ",
+        "nav.contact":"Contact",
+        "nav.cta":"Get a quote",
+
+        "hero.kicker":"International trading, simple and transparent",
+        "hero.title":"Import and export with a clean, fast, and reliable operation.",
+        "hero.lead":"At Elite Perks Solutions LLC we connect suppliers, buyers, and logistics so your international trade runs smoothly: sourcing, negotiation, documentation, shipment coordination, and tracking.",
+        "hero.primary":"Let’s talk about your shipment",
+        "hero.secondary":"See services",
+        "hero.m1v":"End-to-end",
+        "hero.m1":"From supplier to final destination",
+        "hero.m2v":"Compliance-first",
+        "hero.m2":"Documentation & traceability",
+        "hero.m3v":"Fast updates",
+        "hero.m3":"Clear, frequent tracking",
+
+        "hero3d.title":"3D view: logistics chain",
+        "hero3d.sub":"An animated visual inspired by stacked containers: planning, movement, and control.",
+        "hero3d.c1":"Sourcing",
+        "hero3d.c2":"Freight",
+        "hero3d.c3":"Docs",
+        "hero3d.c4":"Delivery",
+
+        "services.kicker":"What we do",
+        "services.title":"Trade services focused on execution.",
+        "services.lead":"We operate as your partner: less friction, fewer surprises, and a structured process you can scale with confidence.",
+        "services.s1t":"Sourcing & negotiation",
+        "services.s1d":"Supplier search, comparisons, basic validations, and support during commercial negotiation.",
+        "services.s2t":"Documentation & coordination",
+        "services.s2d":"Invoices, packing list, shipment coordination, milestones and document checklists for each operation.",
+        "services.s3t":"Logistics & tracking",
+        "services.s3d":"Coordination with freight forwarders, tracking and clear updates until delivery.",
+        "services.s4t":"Risk management",
+        "services.s4d":"Prevent typical costly mistakes: terms, timing, documents, quality and communications.",
+        "services.s5t":"Import / Export trading",
+        "services.s5d":"International buying/selling with focus on traceability, compliance and execution.",
+        "services.s6t":"Commercial support",
+        "services.s6d":"Proposals, cost structure and operational support to scale your trade.",
+
+        "how.kicker":"How we work",
+        "how.title":"A clear process with checkpoints.",
+        "how.lead":"Less improvisation, more control. We share progress, documents and next steps in a simple flow.",
+        "how.st1t":"Brief & goals",
+        "how.st1d":"We define product, volume, preferred Incoterm, timelines and quality criteria.",
+        "how.st2t":"Validation & quote",
+        "how.st2d":"Comparisons, estimated costs, lead times and an execution plan.",
+        "how.st3t":"Execution",
+        "how.st3d":"We coordinate documents, logistics and tracking with updates at each milestone.",
+        "how.st4t":"Closure",
+        "how.st4d":"Delivery & control: learnings to make the next operation faster.",
+        "how.cardt":"Simple communication, real control.",
+        "how.cardd":"We prefer checklists and short confirmations to avoid expensive errors. Less noise, more results.",
+
+        "markets.kicker":"Where we add value",
+        "markets.title":"Built for companies that want structured trade.",
+        "markets.lead":"Whether you’re starting or scaling, we build a “clean” workflow for international buying or selling.",
+        "markets.m1t":"Distribution & retail",
+        "markets.m1d":"Replenishment, sourcing, SKU variety and batch coordination.",
+        "markets.m2t":"Industry & parts",
+        "markets.m2d":"Components, spares, technical supplies and tidy documentation management.",
+        "markets.m3t":"International commerce",
+        "markets.m3d":"Import/export, trading and shipment coordination with tracking.",
+
+        "trust.kicker":"Trust",
+        "trust.title":"Transparency, traceability and compliance.",
+        "trust.lead":"We focus on reducing operational risk: confirmations, organized documents and clear communication. (We don’t provide legal/customs advice; we coordinate with the proper actors for each case).",
+        "trust.t1":"Milestone checklists",
+        "trust.d1":"Fewer mistakes, more control",
+        "trust.t2":"Continuous updates",
+        "trust.d2":"Real shipment status",
+        "trust.t3":"Clear costs",
+        "trust.d3":"Avoid surprises",
+        "trust.t4":"Agile execution",
+        "trust.d4":"Less operational friction",
+        "trust.cardk":"Location",
+        "trust.cardt":"Florida-based, global operations.",
+        "trust.cardd":"We work with a network of suppliers and logistics partners. We coordinate by milestones and keep you informed.",
+        "trust.emailt":"Email",
+
+        "test.kicker":"What clients value",
+        "test.title":"A partner who cares about details.",
+        "test.q1":"“They turned a messy process into a simple flow: checklists, milestones and clear updates.”",
+        "test.a1":"Operations",
+        "test.r1":"Supplies import",
+        "test.q2":"“Strong focus on documentation: fewer back-and-forths, everything tidy.”",
+        "test.a2":"Procurement",
+        "test.r2":"Sourcing & coordination",
+        "test.q3":"“Best part: short, fast communication—no surprises.”",
+        "test.a3":"Management",
+        "test.r3":"International trading",
+
+        "faq.kicker":"Frequently asked questions",
+        "faq.title":"Quick answers.",
+        "faq.q1":"Do you handle customs clearance?",
+        "faq.a1":"No. We coordinate the operation and documentation, and work alongside the appropriate professionals/actors depending on the case.",
+        "faq.q2":"Can you help me find suppliers?",
+        "faq.a2":"Yes. We do sourcing, comparisons and negotiation support so you can decide with confidence.",
+        "faq.q3":"How do you manage lead times and tracking?",
+        "faq.a3":"We define milestones and a checklist. You’ll receive updates at each key point (documents, departure, transit, arrival, delivery).",
+        "faq.q4":"What do you need to provide a quote?",
+        "faq.a4":"Product, quantity, origin/destination, target timeline and Incoterm preference (if any). With that we build an initial plan.",
+
+        "contact.kicker":"Contact",
+        "contact.title":"Tell us about your shipment and we’ll reply fast.",
+        "contact.lead":"If you already know the product and route, even better—we can move faster with an initial assessment.",
+        "contact.addrT":"Address",
+        "contact.emailT":"Email",
+        "contact.note":"Note: This page is informational. Timelines, costs and requirements depend on product, route and available documentation.",
+
+        "form.kicker":"Form",
+        "form.name":"Name",
+        "form.email":"Email",
+        "form.topic":"Topic",
+        "form.topicPh":"Choose an option",
+        "form.opt1":"Import",
+        "form.opt2":"Export",
+        "form.opt3":"Sourcing / Suppliers",
+        "form.opt4":"Logistics / Tracking",
+        "form.opt5":"Other",
+        "form.msg":"Message",
+        "form.send":"Send",
+        "form.privacy":"By sending, you agree we may contact you via email to respond to your inquiry.",
+
+        "foot.disclaimer1":"Trading / Import-Export. No crypto. No markets advisory.",
+        "foot.disclaimer2":"© {year} Elite Perks Solutions LLC. All rights reserved."
+      }
+    };
+
+    function applyLang(lang){
+      const dict = i18n[lang] || i18n.es;
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-i18n");
+        let val = dict[key];
+        if(!val) return;
+
+        // Replace {year} placeholder if present
+        val = val.replace("{year}", new Date().getFullYear());
+
+        // If element is an input/textarea placeholder
+        if(el.tagName === "INPUT" || el.tagName === "TEXTAREA"){
+          // keep actual value; update placeholder only if it looks Spanish default
+          if(el.hasAttribute("placeholder")){
+            if(key.endsWith("placeholder")) el.setAttribute("placeholder", val);
+          }
+        } else if(el.tagName === "OPTION"){
+          el.textContent = val;
+        } else {
+          el.textContent = val;
+        }
+      });
+
+      // Update placeholders that are not data-i18n bound
+      const name = document.getElementById("name");
+      const msg = document.getElementById("message");
+      if(lang === "en"){
+        name.placeholder = "Your name";
+        msg.placeholder = "Tell us product, quantity, origin/destination and timelines.";
+      } else {
+        name.placeholder = "Tu nombre";
+        msg.placeholder = "Contanos producto, cantidades, origen/destino y plazos.";
+      }
+
+      // Toggle buttons
+      document.getElementById("btnEs").classList.toggle("active", lang==="es");
+      document.getElementById("btnEn").classList.toggle("active", lang==="en");
+
+      localStorage.setItem("eps_lang", lang);
+    }
+
+    document.getElementById("btnEs").addEventListener("click", ()=>applyLang("es"));
+    document.getElementById("btnEn").addEventListener("click", ()=>applyLang("en"));
+
+    // ====== Reveal on scroll ======
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add("on");
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach(el=> io.observe(el));
+
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Set initial language
+    applyLang(localStorage.getItem("eps_lang") || "es");
+
+    // ====== Three.js 3D "stacked containers rotating" ======
+    (function init3D(){
+      const canvas = document.getElementById("glCanvas");
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      const scene = new THREE.Scene();
+
+      const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+      camera.position.set(0.0, 1.15, 6.4);
+
+      // Lighting
+      const key = new THREE.DirectionalLight(0xffffff, 1.2);
+      key.position.set(3, 6, 4);
+      scene.add(key);
+
+      const fill = new THREE.DirectionalLight(0xffffff, 0.6);
+      fill.position.set(-4, 2, 2);
+      scene.add(fill);
+
+      const ambient = new THREE.AmbientLight(0xffffff, 0.45);
+      scene.add(ambient);
+
+      // “Liquid glass” environment-ish planes (fake reflections)
+      const bgGeo = new THREE.PlaneGeometry(20, 12);
+      const bgMat = new THREE.MeshBasicMaterial({
+        transparent:true,
+        opacity: 0.9,
+        color: 0x0b1730
+      });
+      const bg = new THREE.Mesh(bgGeo, bgMat);
+      bg.position.set(0,0, -3);
+      scene.add(bg);
+
+      // Group of “containers”
+      const group = new THREE.Group();
+      scene.add(group);
+
+      const containerGeo = new THREE.BoxGeometry(2.2, 0.55, 1.05);
+
+      function makeMat(baseHex, edgeHex){
+        // three.js standard material with a glassy highlight
+        return new THREE.MeshStandardMaterial({
+          color: baseHex,
+          metalness: 0.25,
+          roughness: 0.35,
+          emissive: edgeHex,
+          emissiveIntensity: 0.08
+        });
+      }
+
+      const mats = [
+        makeMat(0x8fb9ff, 0x6de3ff),
+        makeMat(0xa8f0df, 0x8fb9ff),
+        makeMat(0xb6a6ff, 0x8fb9ff),
+        makeMat(0x6de3ff, 0xa8f0df),
+      ];
+
+      // Build stacked/offset containers
+      const count = 11;
+      for(let i=0;i<count;i++){
+        const mesh = new THREE.Mesh(containerGeo, mats[i % mats.length]);
+        mesh.position.y = -1.4 + i*0.33;
+        mesh.position.x = (i%2===0 ? -0.25 : 0.25) + Math.sin(i*0.7)*0.08;
+        mesh.position.z = Math.cos(i*0.55)*0.12;
+        mesh.rotation.y = (i%2===0 ? 0.18 : -0.18);
+        mesh.castShadow = false;
+        mesh.receiveShadow = false;
+        group.add(mesh);
+
+        // Add “ribs” lines (like container corrugation)
+        const ribGeo = new THREE.BoxGeometry(2.25, 0.01, 1.06);
+        const ribMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent:true, opacity: 0.08 });
+        for(let r=0;r<5;r++){
+          const rib = new THREE.Mesh(ribGeo, ribMat);
+          rib.position.set(0, (-0.18 + r*0.09), 0);
+          mesh.add(rib);
+        }
+      }
+
+      // Glass ring accents
+      const torusGeo = new THREE.TorusGeometry(2.25, 0.03, 10, 120);
+      const torusMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent:true, opacity: 0.15 });
+      const ring1 = new THREE.Mesh(torusGeo, torusMat);
+      ring1.position.set(0, 0.1, 0);
+      ring1.rotation.x = Math.PI/2.6;
+      scene.add(ring1);
+
+      const ring2 = ring1.clone();
+      ring2.scale.set(0.72,0.72,0.72);
+      ring2.position.y = -0.7;
+      ring2.material = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent:true, opacity: 0.10 });
+      scene.add(ring2);
+
+      // Resize handler
+      function resize(){
+        const rect = canvas.getBoundingClientRect();
+        const w = Math.max(1, Math.floor(rect.width));
+        const h = Math.max(1, Math.floor(rect.height));
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+      }
+      window.addEventListener("resize", resize, { passive:true });
+      resize();
+
+      // Animation loop
+      let t0 = performance.now();
+      function animate(now){
+        const t = (now - t0) * 0.001;
+
+        // Smooth rotation like a rotating stack of containers
+        group.rotation.y = t * 0.55;
+        group.rotation.x = Math.sin(t*0.6) * 0.08;
+        group.position.y = Math.sin(t*0.85) * 0.06;
+
+        // Rings float
+        ring1.rotation.z = t * 0.25;
+        ring2.rotation.z = -t * 0.18;
+
+        // Camera subtle parallax
+        camera.position.x = Math.sin(t*0.35) * 0.15;
+        camera.lookAt(0, 0.2, 0);
+
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+      }
+      requestAnimationFrame(animate);
+    })();
+  </script>
+</body>
+</html>
